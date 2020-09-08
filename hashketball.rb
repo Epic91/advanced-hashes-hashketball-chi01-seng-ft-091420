@@ -176,7 +176,7 @@ def player_numbers(input)
 end
 
 
-def player_stats(player_name, game_hash)
+def player_stats(player_name)
   player_name.capitalize!
   if game_hash[:home][:players].include?(player_name)
     game_hash[:home][:players][player_name][:stats]
