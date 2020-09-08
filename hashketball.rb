@@ -181,8 +181,6 @@ def player_stats(input)
       if key == :players
         value.each do |player|
           if input == player[:player_name]
-            player.delete(:player_name)
-            binding.pry # having player name inside the hash was a bad idea!
             return player
           end
         end
