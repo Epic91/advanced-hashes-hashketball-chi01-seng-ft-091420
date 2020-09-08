@@ -187,7 +187,6 @@ def player_stats(player_name)
   end
 end
 
-puts player_stats("Jeff Adrien", game_hash)
 
 
 def big_shoe_rebounds
