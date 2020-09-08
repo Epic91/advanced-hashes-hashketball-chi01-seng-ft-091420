@@ -175,20 +175,19 @@ def player_numbers(input)
   return output
 end
 
-def player_stats(input)
-  game_hash.each do |team, team_info|
-    team_info.each do |key, value|
-      if key == :players
-        value.each do |player|
-          if input == player[:player_name]
-            player.delete(:player_name) # having player name inside the hash was a bad idea!
-            return player
-          end
-        end
-      end
-    end
+
+def player_stats(player_name, game_hash)
+  player_name.capitalize!
+  if game_hash[:home][:players].include?(player_name)
+    game_hash[:home][:players][player_name][:stats]
+  elsif game_hash[:away][:players].include?(player_name)
+    game_hash[:away][:players][player_name][:stats]
+  else
+    "No player found."
   end
 end
+
+puts player_stats("Jeff Adrien", game_hash)
 
 
 def big_shoe_rebounds
