@@ -175,17 +175,15 @@ def player_numbers(input)
   return output
 end
 
-def player_stats(name) #takes argument of player name and returns hash of players stats
-  hash = game_hash
-  hash.each do |teams_playing, data|
-    data[:players].each do |player_name, player_data|
-      if player_name == name
-        return hash[teams_playing][:players][name]
+def player_stats(name)
+   game_hash.each do |location, team_data|
+      team_data[:players].each do |player_name, value|
+         if player_name == name
+            return value
+         end
       end
-    end
-  end
+   end
 end
-player_stats("Brendon Haywood")
 
 
 def big_shoe_rebounds
