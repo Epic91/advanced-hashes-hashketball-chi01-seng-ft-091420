@@ -179,6 +179,9 @@ def player_stats(player_name)
   find_the_player(player_name).reject { |key, value| key == :player_name }
 end
 
+def find_the_player(name)
+  players.find {|player| player.fetch(:player_name) == name}
+end
 
 def big_shoe_rebounds
   big_shoe = 0
