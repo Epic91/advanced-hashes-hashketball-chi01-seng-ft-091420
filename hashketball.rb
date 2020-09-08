@@ -185,6 +185,8 @@ def player_stats(name) #takes argument of player name and returns hash of player
     end
   end
 end
+player_stats("Brendon Haywood")
+
 
 def big_shoe_rebounds
   big_shoe = 0
