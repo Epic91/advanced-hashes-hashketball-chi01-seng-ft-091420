@@ -175,17 +175,20 @@ def player_numbers(input)
   return output
 end
 
-def player_stats(player_name, game)
-  game.each do |team, team_hash|
-    team_hash[:players].each do |player, player_hash|
-      if player_hash[:name] == player_name
-        return player_hash[:stats]
+def player_stats(input)
+  game_hash.each do |team, team_info|
+    team_info.each do |key, value|
+      if key == :players
+        value.each do |player|
+          if input == player[:player_name]
+            player.delete(:player_name) # having player name inside the hash was a bad idea!
+            return player
+          end
+        end
       end
     end
   end
 end
-
-p player_stats("Jeff Adrien")
 
 
 
