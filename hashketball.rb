@@ -189,7 +189,7 @@ def player_stats(input)
     end
   end
 end
-jeff_adrien
+player
 
 
 def big_shoe_rebounds
