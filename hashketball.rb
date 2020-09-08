@@ -175,16 +175,19 @@ def player_numbers(input)
   return output
 end
 
-def player_stats(player_name)
-  playerdata = []
-  game_hash.collect do |team, stats|
-    stats[:players].collect do |player, data|
-      if player == player_name
-        playerdata = data
+def player_stats(input)
+  game_hash.each do |team, team_info|
+    team_info.each do |key, value|
+      if key == :players
+        value.each do |player|
+          if input == player[:player_name]
+            player.delete(:player_name) # having player name inside the hash was a bad idea!
+            return player
+          end
+        end
       end
     end
   end
-  playerdata
 end
 
 
