@@ -190,6 +190,8 @@ def player_stats(input)
   end
 end
 
+p player_stats("Jeff Adrien")
+
 
 
 def big_shoe_rebounds
