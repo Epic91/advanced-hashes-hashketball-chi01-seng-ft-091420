@@ -126,47 +126,82 @@ def game_hash
     }
 end
 
+#takes an arg of players name and returns the number on points scored
 def num_points_scored(player_search)
   game_hash.each do |team, team_info|
+    #in the game_hash we iterate over the team hashes
     team_info[:players].each do |player|
+      #when we are inside of team_info we want to access the players array of hashes,
+      #iterating through each player
       if player[:player_name] == player_search
+        #if the two compared is true do the following
         return player[:points]
       end
     end
   end
 end
 
+
+
+#Takes in an arg of players name and returns the shoe size for that player
+
 def shoe_size(name)
-  game_hash.each do |team, team_info|
+  game_hash.each do|team, team_info|
+    #in game_hash we iterate over the team hashes
     team_info[:players].each do |player|
+      #when inside of team_info we want to access the players array of hashes,
+      #iterating through each player
       if player[:player_name] == name
+        #if the two compared is true do the following
         return player[:shoe]
       end
     end
   end
 end
 
+
+
+#takes an arg of the team name and returns an Array of team colors
+
 def team_colors(team)
   if team == "Charlotte Hornets"
+    #if the two compared is true do the following
     return game_hash[:away][:colors]
   else return game_hash[:home][:colors]
   end
 end
 
+
+
+#this method operates on the game hash to return an Array of team names
+
 def team_names
   game_hash.map do |team, team_info|
+    #inside of our game hash we will return a new array using .map
     team_info[:team_name]
+    #inside of our array will be the team names
   end
 end
 
+
+
+#takes an arg of a team name and returns an Array of the jersey numbers for that team
+
 def player_numbers(input)
   output = []
+  #output is set to an empty array
   game_hash.each do |team, team_info|
+    #in the game_hash we iterate through the team hashes
     if team_info[:team_name] == input
+      #if the two compared are true
       team_info.each do |key, value|
+        #iterate over the key value pairs
         if key == :players
+          #if the two comapred are true
           value.each do |player|
+            #iterate through each player
           output.push(player[:number])
+          #push the player numbers into the empty array
           end
         end
       end
@@ -175,12 +210,21 @@ def player_numbers(input)
   return output
 end
 
+
+
+#takes in an arg of a players name and returns a hash of that players stats
+
 def player_stats(input)
   game_hash.each do |team, team_info|
+    #in the game hash we iterate through the team hashes
     team_info.each do |key, value|
+      #iterate through the key value pairs
       if key == :players
+        #if the two compared return true 
         value.each do |player|
+          #iterate through the players
           if input == player[:player_name]
+            #if the two compared return true
             return player
           end
         end
@@ -190,15 +234,22 @@ def player_stats(input)
 end
 
 
-
+#returns the number of rebounds associated with the player that has the largest shoe size
 def big_shoe_rebounds
   big_shoe = 0
+  #big shoe is set to 0
   rebounds = 0
+  #rebounds is set to 0
   game_hash.each do |team, team_info|
+    #in the game hash we iterate through the team hashes
     team_info[:players].each do |player|
+      #iterate through each player
       if player[:shoe] > big_shoe
+        #if the players shoe size if more than big_shoe
         big_shoe = player[:shoe]
+        #the players shoe is set to big_shoe
         rebounds = player[:rebounds]
+        #the players rebounds are set in rebounds
       end
     end
   end
